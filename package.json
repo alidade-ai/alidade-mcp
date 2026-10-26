@@ -1,0 +1,48 @@
+{
+  "name": "@alidade/mcp",
+  "version": "0.1.0",
+  "description": "Local MCP server for Alidade that fills in X post text from the X API with your own key",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alidade-ai/alidade-mcp"
+  },
+  "bin": {
+    "alidade-mcp": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && node build.mjs && tsc -p tsconfig.build.json",
+    "check": "oxlint && tsc",
+    "test": "vitest run",
+    "format": "oxfmt --write .",
+    "pack:mcpb": "pnpm build && node scripts/pack-mcpb.mjs",
+    "prepublishOnly": "pnpm check && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2",
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.28.2",
+    "oxfmt": "^0.74.0",
+    "oxlint": "^1.89.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

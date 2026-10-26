@@ -1,0 +1,51 @@
+{
+  "manifest_version": "0.3",
+  "name": "alidade",
+  "display_name": "Alidade",
+  "version": "0.1.0",
+  "description": "Competitive intelligence on social media messaging and digital marketing, with X post text filled in from your own X API key.",
+  "long_description": "Connects Claude to your Alidade workspace: saved searches, entities, analytics, mentions, and semantic search. Alidade can't redistribute X post content, so X posts arrive as IDs; add your own X API bearer token and this extension fetches their text and metrics from the X API on your machine before Claude sees them.",
+  "author": {
+    "name": "Alidade",
+    "url": "https://alidade-ai.com"
+  },
+  "homepage": "https://alidade-ai.com",
+  "documentation": "https://docs.alidade-ai.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alidade-ai/alidade-mcp"
+  },
+  "license": "MIT",
+  "server": {
+    "type": "node",
+    "entry_point": "server/cli.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/cli.js"],
+      "env": {
+        "ALIDADE_API_KEY": "${user_config.alidade_api_key}",
+        "X_BEARER_TOKEN": "${user_config.x_bearer_token}"
+      }
+    }
+  },
+  "user_config": {
+    "alidade_api_key": {
+      "type": "string",
+      "title": "Alidade API key",
+      "description": "Create one under Settings → Workspace → API keys in Alidade.",
+      "sensitive": true,
+      "required": true
+    },
+    "x_bearer_token": {
+      "type": "string",
+      "title": "X API bearer token (optional)",
+      "description": "An app-only bearer token from your X developer account. Used to fetch X post text and metrics; X bills these lookups to your account. Leave empty to receive X post IDs only.",
+      "sensitive": true,
+      "required": false
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": { "node": ">=20.0.0" }
+  }
+}
