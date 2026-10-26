@@ -29,8 +29,20 @@ jobs:
       - run: pnpm pack:mcpb
       # Auth via npm Trusted Publishing (OIDC): needs npm >= 11.5.1 (node 24)
       # and a Trusted Publisher entry on @alidade/mcp pointing at this file.
-      - run: npm publish --access public
+      - name: Publish to npm
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if npm view "@alidade/mcp@$version" version >/dev/null 2>&1; then
+            echo "@alidade/mcp@$version is already on npm, skipping publish"
+          else
+            npm publish --access public
+          fi
       - name: Create GitHub release with the Desktop extension
-        run: gh release create "$GITHUB_REF_NAME" ./*.mcpb --title "$GITHUB_REF_NAME" --generate-notes
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" ./*.mcpb --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" ./*.mcpb --title "$GITHUB_REF_NAME" --generate-notes
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
