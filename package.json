@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alidade-ai/alidade-mcp"
+    "url": "git+https://github.com/alidade-ai/alidade-mcp.git"
   },
   "bin": {
     "alidade-mcp": "dist/cli.js"
