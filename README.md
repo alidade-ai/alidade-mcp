@@ -103,3 +103,15 @@ pnpm test
 pnpm build      # dist/cli.js (bundled) + library build
 pnpm pack:mcpb  # alidade-<version>.mcpb for Claude Desktop
 ```
+
+## Releasing
+
+Bump `version` in both `package.json` and `manifest.json`, commit, then tag
+and push:
+
+```bash
+git tag v0.1.1 && git push origin v0.1.1
+```
+
+The release workflow checks, tests, publishes to npm (Trusted Publishing),
+and creates a GitHub release with the `.mcpb` attached.
