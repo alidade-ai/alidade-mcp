@@ -1,6 +1,6 @@
 {
   "name": "@alidade/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local MCP server for Alidade that fills in X post text from the X API with your own key",
   "license": "MIT",
   "repository": {
