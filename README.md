@@ -15,7 +15,7 @@ Without an X token it behaves exactly like the hosted server.
 
 ## Setup
 
-You need an Alidade API key (Settings → Workspace → API keys) and, optionally,
+You need an Alidade API key (Settings → Workspace → API) and, optionally,
 an app-only bearer token from your X developer account. X bills post lookups
 to your X account.
 

@@ -11,7 +11,7 @@ function env(name: string): string | undefined {
 const apiKey = env("ALIDADE_API_KEY");
 if (!apiKey) {
   console.error(
-    "ALIDADE_API_KEY is not set. Create a key under Settings → Workspace → API keys in Alidade.",
+    "ALIDADE_API_KEY is not set. Create a key under Settings → Workspace → API in Alidade.",
   );
   process.exit(1);
 }
