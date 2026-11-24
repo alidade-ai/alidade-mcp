@@ -2,7 +2,11 @@ import type { CallToolResult } from "@modelcontextprotocol/server";
 
 import { lookupXPosts, type FetchLike } from "./x.js";
 
-export const MENTION_TOOLS = new Set(["search_mentions", "semantic_search_mentions"]);
+export const MENTION_TOOLS = new Set([
+  "search_mentions",
+  "semantic_search_mentions",
+  "get_mentions",
+]);
 
 const REMOTE_X_HINT = /^\d+ X posts? omit text/;
 

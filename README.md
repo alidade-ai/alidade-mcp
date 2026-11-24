@@ -86,7 +86,7 @@ apply to you as the X key holder (display requirements, honoring deletions).
 
 ## How X posts are filled in
 
-For `search_mentions` and `semantic_search_mentions`, X posts that come back
+For `search_mentions`, `semantic_search_mentions`, and `get_mentions`, X posts that come back
 without text are looked up with X's
 [posts lookup](https://docs.x.com/x-api/posts/lookup/introduction) in batches
 of 100. Each post's `content` and `metrics` (`likes`, `shares` = reposts +
